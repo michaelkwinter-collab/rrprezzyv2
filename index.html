@@ -12,7 +12,7 @@
 :root{--bg:#fff;--bg2:#f5f5f7;--bg3:#e8e8ea;--text:#1a1a1a;--text2:#555;--text3:#999;--border:rgba(0,0,0,0.1);--border2:rgba(0,0,0,0.2);--navy:#1a3a6b;--navy-light:#eef3fc;--r:12px;--rlg:18px;}
 @media(prefers-color-scheme:dark){:root{--bg:#1c1c1e;--bg2:#2c2c2e;--bg3:#3a3a3c;--text:#f2f2f7;--text2:#aeaeb2;--text3:#6e6e73;--border:rgba(255,255,255,0.1);--border2:rgba(255,255,255,0.22);--navy-light:#1a2a45;}}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;background:var(--bg3);color:var(--text);}
+html,body{height:100%;max-height:100%;overflow:hidden;position:fixed;width:100%;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;background:var(--bg3);color:var(--text);}
 #app{height:100%;display:flex;flex-direction:column;overflow:hidden;position:relative;}
 .screen{display:none!important;flex-direction:column;height:100%;overflow:hidden;}.screen.active{overflow:hidden;}
 .screen.active{display:flex!important;}
@@ -2346,6 +2346,8 @@ document.addEventListener('DOMContentLoaded', function() {
   initSetupUpgrades();
   const restored = autoRestore();
   if(!restored) syncCards();
+  // Always start on setup screen regardless of restored state
+  show('s-setup');
   
   // Setup auto-save triggers
   document.addEventListener('input', function(e) {

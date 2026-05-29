@@ -974,8 +974,9 @@ html,body{height:100%;background:#0a0f1a;font-family:-apple-system,BlinkMacSyste
       <button class="pitch-nav-btn" onclick="goToSummaryV2()">Summary</button>
     </div>
   </div>
-  10px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#5B9BD5;padding-bottom:2px;">Most common</div>
+  <div class="page-body" style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px;background:var(--bg2);">
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#5B9BD5;padding-bottom:8px;">Most common</div>
                   <div class="addon-card" id="card-gutters">
             <div class="addon-card-main" onclick="toggleAddon('gutters')">
               <div class="addon-strip"></div>
@@ -1524,8 +1525,12 @@ html,body{height:100%;background:#0a0f1a;font-family:-apple-system,BlinkMacSyste
 
   </div>
 </div>
+</div>
+</div>
+</div>
+</div>
 
-</div></div></div></div></div>
+</div></div></div>
 
 <div id="s-summary" class="screen">
   <div class="topbar">
@@ -3273,6 +3278,18 @@ function initSetupUpgrades(){
     if(labelEl) labelEl.addEventListener('input',()=>{labelEl.dataset.edited='1';});
   });
   updateDefaultLabels();
+}
+
+function toggleSetupUpgrade(p, id, el){
+  if(!setupUpgrades[p]) setupUpgrades[p] = new Set();
+  if(setupUpgrades[p].has(id)){
+    setupUpgrades[p].delete(id);
+    el.classList.remove('sel');
+  } else {
+    setupUpgrades[p].add(id);
+    el.classList.add('sel');
+  }
+  autoSave();
 }
 
 function renderSetupUpgrades(p){

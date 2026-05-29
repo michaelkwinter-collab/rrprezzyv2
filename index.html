@@ -907,9 +907,7 @@ html,body{height:100%;background:#0a0f1a;font-family:-apple-system,BlinkMacSyste
     </div>
     <div class="tright" style="display:flex;gap:6px;">
       <button class="pitch-nav-btn" onclick="show('s-howheard')">&larr; Back</button>
-      <button class="pitch-nav-btn" onclick="goToAddonsForCurrentOption()">Add-Ons &rarr;</button>
       <button class="pitch-nav-btn" onclick="goToSummaryV2()">Summary</button>
-      <button class="pitch-nav-btn" onclick="show('s-setup')">&#9998; Setup</button>
     </div>
   </div>
   <iframe id="scope-iframe-p1" style="flex:1;border:none;background:#0a0f1a;" allow="autoplay" allowfullscreen></iframe>
@@ -926,9 +924,7 @@ html,body{height:100%;background:#0a0f1a;font-family:-apple-system,BlinkMacSyste
     </div>
     <div class="tright" style="display:flex;gap:6px;">
       <button class="pitch-nav-btn" onclick="show('s-howheard')">&larr; Back</button>
-      <button class="pitch-nav-btn" onclick="goToAddonsForCurrentOption()">Add-Ons &rarr;</button>
       <button class="pitch-nav-btn" onclick="goToSummaryV2()">Summary</button>
-      <button class="pitch-nav-btn" onclick="show('s-setup')">&#9998; Setup</button>
     </div>
   </div>
   <iframe id="scope-iframe-p2" style="flex:1;border:none;background:#0a0f1a;" allow="autoplay" allowfullscreen></iframe>
@@ -945,9 +941,7 @@ html,body{height:100%;background:#0a0f1a;font-family:-apple-system,BlinkMacSyste
     </div>
     <div class="tright" style="display:flex;gap:6px;">
       <button class="pitch-nav-btn" onclick="show('s-howheard')">&larr; Back</button>
-      <button class="pitch-nav-btn" onclick="goToAddonsForCurrentOption()">Add-Ons &rarr;</button>
       <button class="pitch-nav-btn" onclick="goToSummaryV2()">Summary</button>
-      <button class="pitch-nav-btn" onclick="show('s-setup')">&#9998; Setup</button>
     </div>
   </div>
   <iframe id="scope-iframe-p3" style="flex:1;border:none;background:#0a0f1a;" allow="autoplay" allowfullscreen></iframe>
@@ -1948,6 +1942,7 @@ var currentPrice = 'p1';
 var addonActive = {};
 var addonStateByPrice = {};
 var sel = {};
+var insulationTier = 'platinum';
 
 const SCOPES={
   shingle:{videoUrl:"https://player.vimeo.com/video/1184676057?h=8fce693896&badge=0&autopause=0&color=1a3a6b&title=0&byline=0&portrait=0&autoplay=1&muted=1",imageUrl:"",label:"Shingle Roof",core:{title:"Shingle Base Package",sub:"7 items \u00B7 always included",icon:"🏠",items:["Full tear-off & inspection","Ice & water shield \u2014 Weatherlock Flex","Synthetic underlayment","All new metal \u2014 flashings","O\u2019hagin low profile vents","Owens Corning Duration COOL shingles","10-year workmanship / labor warranty"],desc:"Every shingle job includes this complete foundation \u2014 no shortcuts, no exceptions.",pts:["Full tear-off \u2014 every board inspected","Ice & water shield at all vulnerable areas","O\u2019hagin vents for proper attic airflow","OC Duration COOL shingles","10-year workmanship warranty"]},upgrades:[{id:"udl50",name:"Synthetic UDL-50 Underlayment",sub:"Owens Corning UDL-50",icon:"📋",desc:"OC UDL-50 engineered specifically for OC shingle systems. Superior tear resistance supporting the full Platinum warranty.",pts:["Engineered for OC shingle systems","Superior tear and puncture resistance","Required for OC Platinum warranty"]},{id:"psu30",name:"Peel & Stick \u2014 PSU-30",sub:"Premium fully adhered underlayment",icon:"📋",desc:"PSU-30 peel & stick provides a fully adhered, self-sealing waterproof layer. Maximum protection for the deck.",pts:["Fully adhered \u2014 no gaps or voids","Self-sealing around every fastener","Maximum waterproof protection"]},{id:"titanium",name:"Peel & Stick \u2014 Titanium FR",sub:"Premium fire-rated underlayment",icon:"📋",desc:"Titanium FR fire-rated peel & stick. Class A fire resistance and premium full-system performance.",pts:["Class A fire rated","Fully adhered self-sealing membrane","Top-tier system performance"]},{id:"starter",name:"OC Starter + Hip & Ridge",sub:"Owens Corning starter & ridge system",icon:"🏠",desc:"OC starter strips at eaves and rakes plus matching hip and ridge system. Complete from bottom to top.",pts:["Prevents shingle blow-off at eaves","Matches shingle color perfectly","Required for full OC warranty compliance"]},{id:"oc_warranty",name:"Owens Corning Platinum Warranty",sub:"Labor & material, transferable",icon:"📜",desc:"The OC Platinum Preferred warranty covers both materials AND labor, fully transferable to the next owner.",pts:["Covers labor, not just materials","Fully transferable to next owner","Backed by Owens Corning directly"]},{id:"solar_protect",name:"Solar PROtect Warranty",sub:"Warranty under solar panels",icon:"\u26A1",desc:"Covers roof penetrations made during solar installation, protecting the full system under every panel.",pts:["Covers all solar penetrations","Protects warranty with existing panels","Peace of mind for solar homeowners"]},{id:"multi_tearoff",name:"Multiple Layers Tear-Off",sub:"Additional layer removal",icon:"🏗",desc:"When a roof has two or more layers of existing material, each additional layer requires extra labor, disposal, and deck inspection time. This upgrade covers the full removal of multiple layers.",pts:["Covers removal of 2+ existing roof layers","Includes extra disposal costs","Full deck inspection after each layer"]},{id:"crickets",name:"Build Crickets",sub:"Chimney, skylight, etc.",icon:"🔨",desc:"Crickets redirect water away from vertical obstructions like chimneys and skylights, preventing pooling and leaks at the most vulnerable points.",pts:["Prevents water pooling behind chimneys","Required for proper flashing at large obstructions","Critical for longevity around skylights"]},{id:"thermasheet",name:"ThermaSheet Underlayment",sub:"Reflective insulation layer",icon:"🌡",desc:"Low-E ThermaSheet is a 99% pure polished aluminum roofing underlayment laminated to a closed-cell foam core. Installed directly under your new roof, it reflects up to 97% of radiant heat, lowers attic temps by 8–12°F, and reduces heating & cooling costs year-round.",pts:["Reflects up to 97% of radiant heat","Lowers attic temperature 8–12°F","Class A fire rated · 30-year warranty","Stand-alone ICC-approved underlayment"]}]},
